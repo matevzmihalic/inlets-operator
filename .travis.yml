@@ -10,11 +10,11 @@ services:
 script:
 - TAG=${TRAVIS_TAG:=latest} make build
 
-before_deploy:
-- echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+#before_deploy:
+#- echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
 deploy:
   provider: script
   script: TAG=${TRAVIS_TAG} make push manifest
-  on:
+  true:
     tags: true
